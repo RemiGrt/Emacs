@@ -98,7 +98,7 @@
 
 ;; calendar start on monday
 (setq calendar-week-start-day 1)
-
+;; Display Week
 (setq calendar-intermonth-text
       '(propertize
         (format "%2d"
