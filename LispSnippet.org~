@@ -1,0 +1,5 @@
+
+
+#+begin_src elisp :tangle
+(message user-emacs-directory)
+#+end_src
