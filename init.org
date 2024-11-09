@@ -51,6 +51,11 @@ Use init.el
 #+end_src
 
 * Dired
+- C-x C-q Rend le buffer editable
+- C-c C-c Apllique les changements
+- j jump to file
+- ^ parent folder
+
 #+begin_src elisp :tangle yes
 ;;
 ;; Dired
