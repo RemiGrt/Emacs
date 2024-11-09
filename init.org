@@ -112,7 +112,9 @@
 - no need to install, just write in init file
 - C-x g : magit status
 - stage an individual hunk, again by pressing s while point is inside it.
-- 
+- c commit and write message
+- C-c C-c
+- Push origin P u 
 #+begin_src elisp :tangle yes
   ;;
   ;; Magit
