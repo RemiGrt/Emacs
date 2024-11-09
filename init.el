@@ -65,3 +65,11 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 
+;;
+;; Dired
+;; C-x C-q Rend le buffer editable
+;; C-c C-c Apllique les changements
+;; j jump to file
+;; ^ parent folder
+
+
