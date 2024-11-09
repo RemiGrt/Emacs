@@ -109,7 +109,9 @@
 #+end_src
 
 * Magit
-use-package is set up
+- use-package is set up
+- no need to install, just write in init file
+- C-x g : magit status
 #+begin_src elisp :tangle yes
   ;;
   ;; Magit
@@ -117,3 +119,16 @@ use-package is set up
   (use-package magit
     :ensure t)
 #+end_src
+
+* Markdown Mode
+#+begin_src elisp :tangle yes
+  ;;
+  ;; Mardown
+  ;;
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+#+end_src
+
+
