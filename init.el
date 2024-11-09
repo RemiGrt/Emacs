@@ -16,14 +16,6 @@
                   'font-lock-face 'font-lock-keyword-face))
 
 ;;
-;; WindMove
-;;
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)  
-(global-set-key (kbd "C-c <down>")  'windmove-down)
-
-;;
 ;; StartUp Windows
 ;; Backup Files
 ;;
@@ -52,8 +44,6 @@
 ;; Shell
 ;;
 
-
-
 ;;
 ;; Multiple Cursor
 ;; M-x package-install multiple-cursors
@@ -63,5 +53,3 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-
