@@ -1,5 +1,29 @@
+* Local variables
+# local variables:
+# output-file: "./test.el"
+# org-attach-directory: "./data"
+# org-id-method: uuid
+# end:
+
+#+MACRO: output-file "./test.el"
+
+* Tangle file
+C-c C-v t
+
+Remove .emacs file if any
+
+Use init.el
+
+
 ;;
-;; calendar start on monday
+;; To Complete
+;; 
+(setq backup-directory-alist '(("." . "~/MyEmacsBackups")))
+
+
+#+begin_src elisp :tangle {{{output-file}}}
+;;
+;; calendar start on monday test
 ;;
 (setq calendar-week-start-day 1)
 ;; Display Week
@@ -14,7 +38,19 @@
 (setq calendar-intermonth-header
       (propertize "Wk"                  ; or e.g. "KW" in Germany
                   'font-lock-face 'font-lock-keyword-face))
+#+end_src
+		  
+#+begin_src elisp :tangle ./test.el
+;;
+;; WindMove
+;;
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)  
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+#+end_src
 
+#+begin_src elisp :tangle ./test.el
 ;;
 ;; StartUp Windows
 ;; Backup Files
@@ -22,7 +58,9 @@
 (setq inhibit-startup-screen t)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+#+end_src
 
+#+begin_src elisp :tangle ./test.el
 ;;
 ;; Dired
 ;;
@@ -39,11 +77,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
+#+end_src
+ 
+#+begin_src elisp :tangle ./test.el
 ;;
 ;; Shell
 ;;
+#+end_src
 
+#+begin_src elisp :tangle ./test.el
 ;;
 ;; Multiple Cursor
 ;; M-x package-install multiple-cursors
@@ -53,4 +95,5 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+#+end_src
 

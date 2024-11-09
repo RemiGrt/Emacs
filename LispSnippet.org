@@ -1,0 +1,12 @@
+
+* Affiche le repertoire de conf. d'Emacs
+#+begin_src elisp 
+(message user-emacs-directory)
+#+end_src
+
+* Load init.el
+#+begin_src elisp 
+(load-file (concat user-emacs-directory "init.el"))
+#+end_src
+
+* Test

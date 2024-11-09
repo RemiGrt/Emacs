@@ -1,21 +1,4 @@
 ;;
-;; calendar start on monday
-;;
-(setq calendar-week-start-day 1)
-;; Display Week
-(setq calendar-intermonth-text
-      '(propertize
-        (format "%2d"
-                (car
-                 (calendar-iso-from-absolute
-                  (calendar-absolute-from-gregorian (list month day year)))))
-        'font-lock-face 'font-lock-warning-face))
-
-(setq calendar-intermonth-header
-      (propertize "Wk"                  ; or e.g. "KW" in Germany
-                  'font-lock-face 'font-lock-keyword-face))
-
-;;
 ;; StartUp Windows
 ;; Backup Files
 ;;
@@ -53,4 +36,3 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
