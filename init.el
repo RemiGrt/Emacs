@@ -1,13 +1,3 @@
-#+PROPERTY: header-args :tangle ./init.el
-
-
-* Tangle file
-- C-c C-v t : M-x org-babel-tangle
-- Remove .emacs file if any
-- Use init.el
-
-* Calendar
-#+begin_src elisp :tangle yes
 ;;
 ;; calendar start on monday
 ;;
@@ -24,10 +14,7 @@
 (setq calendar-intermonth-header
       (propertize "Wk"                  ; or e.g. "KW" in Germany
                   'font-lock-face 'font-lock-keyword-face))
-#+end_src
 
-* WindMove
-#+begin_src elisp :tangle yes
 ;;
 ;; WindMove
 ;;
@@ -35,27 +22,16 @@
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>")    'windmove-up)  
 (global-set-key (kbd "C-c <down>")  'windmove-down)
-#+end_src
 
-* Startup, Visual, General Conf
-#+begin_src elisp :tangle yes
-  ;;
-  ;; StartUp Windows
-  ;; Backup Files
-  ;;
-  (setq inhibit-startup-screen t)
-  (add-hook 'window-setup-hook 'toggle-frame-maximized t)
-  (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
-  (tool-bar-mode -1)
-#+end_src
+;;
+;; StartUp Windows
+;; Backup Files
+;;
+(setq inhibit-startup-screen t)
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+(tool-bar-mode -1)
 
-* Dired
-- C-x C-q Rend le buffer editable
-- C-c C-c Apllique les changements
-- j jump to file
-- ^ parent folder
-
-#+begin_src elisp :tangle yes
 ;;
 ;; Dired
 ;;
@@ -72,17 +48,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-#+end_src
 
-* Shell 
-#+begin_src elisp :tangle yes
 ;;
 ;; Shell
 ;;
-#+end_src
 
-* Multiple Cursor 
-#+begin_src elisp :tangle yes
 ;;
 ;; Multiple Cursor test 0
 ;; M-x package-install multiple-cursors
@@ -92,28 +62,21 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-#+end_src
 
-* Tangle on save (not working)
-#+begin_src elisp :tangle yes
-  ;; 
-  ;; Automatically tangle our  config file when we save it test
-  ;;
-      (defun efs/org-babel-tangle-config ()
-	(when (string-equal (buffer-file-name)
-			    (expand-file-name "./init.el"))
-	  ;; Dynamic scoping to the rescue
-	  (let ((org-confirm-babel-evaluate nil))
-	    (org-babel-tangle))))
-      (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
-#+end_src
+;; 
+;; Automatically tangle our  config file when we save it test
+;;
+    (defun efs/org-babel-tangle-config ()
+      (when (string-equal (buffer-file-name)
+			  (expand-file-name "./init.el"))
+	;; Dynamic scoping to the rescue
+	(let ((org-confirm-babel-evaluate nil))
+	  (org-babel-tangle))))
+    (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 
-* Magit
-use-package is set up
-#+begin_src elisp :tangle yes
-  ;;
-  ;; Magit
-  ;;
-  (use-package magit
-    :ensure t)
-#+end_src
+;;
+;; Magit
+;;
+(use-package magit
+  :ensure t)
+
