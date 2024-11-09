@@ -1,6 +1,5 @@
 #+PROPERTY: header-args :tangle ./init.el
 
-
 * Tangle file
 - C-c C-v t : M-x org-babel-tangle
 - Remove .emacs file if any
@@ -112,6 +111,8 @@
 - use-package is set up
 - no need to install, just write in init file
 - C-x g : magit status
+- stage an individual hunk, again by pressing s while point is inside it.
+- 
 #+begin_src elisp :tangle yes
   ;;
   ;; Magit
