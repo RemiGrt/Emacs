@@ -1,12 +1,17 @@
-
+- C-c C-c: Evaluate block code, le resutat s'affiche en tant que bloc result
+- C-x C-e: Evalue une ligne lisp (dans n'importe quel buffer, le resultat est dans mini buffer
+- C-j : Evalue dans scratch pad
+  
 * Affiche le repertoire de conf. d'Emacs
 #+begin_src elisp 
 (message user-emacs-directory)
 #+end_src
+
+#+RESULTS:
+: ~/.emacs.d/
 
 * Load init.el
 #+begin_src elisp 
 (load-file (concat user-emacs-directory "init.el"))
 #+end_src
 
-* Test

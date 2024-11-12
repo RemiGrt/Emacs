@@ -1,12 +1,9 @@
 #+PROPERTY: header-args :tangle ./init.el
 
-
 * Tangle file
-C-c C-v t : M-x org-babel-tangle
-
-Remove .emacs file if any
-
-Use init.el
+- C-c C-v t : M-x org-babel-tangle
+- Remove .emacs file if any
+- Use init.el
 
 * Calendar
 #+begin_src elisp :tangle yes
@@ -31,7 +28,7 @@ Use init.el
 * WindMove & Shrink Windows
 #+begin_src elisp :tangle yes
 ;;
-;; WindMove :tangle yes
+;; WindMove
 ;;
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
@@ -39,7 +36,8 @@ Use init.el
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 #+end_src
 
-#+begin_src elisp
+
+#+begin_src elisp :tangle yes
 ;; resize buffer
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
@@ -48,7 +46,12 @@ Use init.el
 #+end_src
 
 
-* Startup, general config
+
+* Startup, Visual, General Conf
+#+begin_src elisp :tangle yes
+(setq user-mail-address "remi.griot@gmail.com")
+#+end_src
+
 #+begin_src elisp :tangle yes
   ;;
   ;; StartUp Windows
@@ -60,10 +63,15 @@ Use init.el
   ;; display column and line
   (setq line-number-mode t)
   (setq column-number-mode t)
-
+  (tool-bar-mode -1)
 #+end_src
 
 * Dired
+- C-x C-q Rend le buffer editable
+- C-c C-c Apllique les changements
+- j jump to file
+- ^ parent folder
+
 #+begin_src elisp :tangle yes
 ;;
 ;; Dired
@@ -105,19 +113,43 @@ Use init.el
 
 * Tangle on save (not working)
 #+begin_src elisp :tangle yes
-;; Automatically tangle our  config file when we save it test
-(defun efs/org-babel-tangle-config ()
-  (when (string-equal (buffer-file-name)
-                      (expand-file-name "./init.el"))
-    ;; Dynamic scoping to the rescue
-    (let ((org-confirm-babel-evaluate nil))
-      (org-babel-tangle))))
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+  ;; 
+  ;; Automatically tangle our  config file when we save it test
+  ;;
+      (defun efs/org-babel-tangle-config ()
+	(when (string-equal (buffer-file-name)
+			    (expand-file-name "./init.el"))
+	  ;; Dynamic scoping to the rescue
+	  (let ((org-confirm-babel-evaluate nil))
+	    (org-babel-tangle))))
+      (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 #+end_src
 
 * Magit
-use-package is set up
+- use-package is set up
+- no need to install, just write in init file
+- C-x g : magit status
+- stage an individual hunk, again by pressing s while point is inside it.
+- c commit and write message
+- C-c C-c
+- Push origin P u 
 #+begin_src elisp :tangle yes
+  ;;
+  ;; Magit
+  ;;
   (use-package magit
     :ensure t)
 #+end_src
+
+* Markdown Mode
+#+begin_src elisp :tangle yes
+  ;;
+  ;; Mardown
+  ;;
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+#+end_src
+
+
