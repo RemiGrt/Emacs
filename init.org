@@ -28,8 +28,8 @@ Use init.el
                   'font-lock-face 'font-lock-keyword-face))
 #+end_src
 
-* WindMove
-#+begin_src elisp
+* WindMove & Shrink Windows
+#+begin_src elisp :tangle yes
 ;;
 ;; WindMove :tangle yes
 ;;
@@ -39,15 +39,28 @@ Use init.el
 (global-set-key (kbd "C-c <down>")  'windmove-down)
 #+end_src
 
+#+begin_src elisp
+;; resize buffer
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+#+end_src
+
+
 * Startup, general config
 #+begin_src elisp :tangle yes
-;;
-;; StartUp Windows
-;; Backup Files
-;;
-(setq inhibit-startup-screen t)
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+  ;;
+  ;; StartUp Windows
+  ;; Backup Files
+  ;;
+  (setq inhibit-startup-screen t)
+  (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+  ;; display column and line
+  (setq line-number-mode t)
+  (setq column-number-mode t)
+
 #+end_src
 
 * Dired
