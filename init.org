@@ -152,4 +152,15 @@
   :init (setq markdown-command "multimarkdown"))
 #+end_src
 
+* Tcl Mode
+#+begin_src elisp :tangle yes
+  ;;
+  ;; Tcl Mode for some files
+  ;;
+(setq auto-mode-alist (cons '("\\.tcl$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.do$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.qsf$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.sdc$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.xdc$" . tcl-mode) auto-mode-alist))
+#+end_src
 
