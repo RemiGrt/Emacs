@@ -5,6 +5,15 @@
 - Remove .emacs file if any
 - Use init.el
 
+* Package
+#+begin_src elisp :tangle yes
+;;
+;; Melpa Package
+;;
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+#+end_src
+
 * Calendar
 #+begin_src elisp :tangle yes
 ;;
@@ -91,11 +100,14 @@
  )
 #+end_src
 
-* Shell 
+* Shell
+- Use colored shell
 #+begin_src elisp :tangle yes
-;;
-;; Shell
-;;
+  ;;
+  ;; Shell
+  ;;
+(use-package eterm-256color
+  :hook (term-mode . eterm-256color-mode))
 #+end_src
 
 * Multiple Cursor 

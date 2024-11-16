@@ -61,8 +61,10 @@
  )
 
 ;;
-;; Shell
-;;
+  ;; Shell
+  ;;
+(use-package eterm-256color
+  :hook (term-mode . eterm-256color-mode))
 
 ;;
 ;; Multiple Cursor test 0
@@ -98,3 +100,18 @@
   :ensure t
   :mode ("README\\.md\\'" . gfm-mode)
   :init (setq markdown-command "multimarkdown"))
+
+;;
+  ;; Tcl Mode for some files
+  ;;
+(setq auto-mode-alist (cons '("\\.tcl$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.do$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.qsf$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.sdc$" . tcl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.xdc$" . tcl-mode) auto-mode-alist))
+
+;;
+;; 
+;;
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
