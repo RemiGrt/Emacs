@@ -11,7 +11,13 @@
 : ~/.emacs.d/
 
 * Load init.el
-#+begin_src elisp 
-(load-file (concat user-emacs-directory "init.el"))
+#+begin_src elisp
+  (defun load-init()
+  "Fonction chargeant le fichier de ini.el"
+  (interactive)
+    (load-file (concat user-emacs-directory "init.el")))
 #+end_src
+
+#+RESULTS:
+: load-init
 

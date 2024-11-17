@@ -176,3 +176,14 @@
 (setq auto-mode-alist (cons '("\\.xdc$" . tcl-mode) auto-mode-alist))
 #+end_src
 
+* Personnal Function
+
+#+begin_src elisp :tangle yes
+  ;;
+  ;; First funtion
+  ;;
+  (defun load-init()
+  "Fonction chargeant le fichier de ini.el"
+  (interactive)
+    (load-file (concat user-emacs-directory "init.el")))
+#+end_src
