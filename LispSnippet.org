@@ -12,7 +12,7 @@
 
 * Load init.el
 #+begin_src elisp
-  (defun load-init()
+  (defun remi-load-init()
   "Fonction chargeant le fichier de ini.el"
   (interactive)
     (load-file (concat user-emacs-directory "init.el")))
@@ -21,3 +21,22 @@
 #+RESULTS:
 : load-init
 
+* Write to a file
+#+begin_src elisp
+ (defun remi-file-info()
+ " Give some infos"
+ (interactive)
+ (message "Nombre de ligne is " count-lines-pages))
+#+end_src
+
+#+RESULTS:
+: remi-file-info
+
+#+begin_src elisp
+(defun echo-current-buffer-filename (f)
+  (interactive (list (buffer-file-name)))
+  (message "Current buffer filename is %s" f))
+#+end_src
+
+#+RESULTS:
+: echo-current-buffer-filename
