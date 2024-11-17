@@ -23,10 +23,14 @@
 
 * Write to a file
 #+begin_src elisp
- (defun remi-file-info()
- " Give some infos"
- (interactive)
- (message "Nombre de ligne is " count-lines-pages))
+  (get-buffer-create "Remi")
+  (defun remi-file-info(filename)
+  " Give some infos"
+  (interactive "fFile name: ")
+  (with-current-buffer "Remi"
+    (goto-char (point-max))
+  ;;(insert "Nombre de ligne is %s" count-lines-pages(filename))))
+    (insert "Nombre de ligne is " ))))
 #+end_src
 
 #+RESULTS:
