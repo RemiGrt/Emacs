@@ -58,7 +58,8 @@
 
 * Startup, Visual, General Conf
 #+begin_src elisp :tangle yes
-(setq user-mail-address "remi.griot@gmail.com")
+  (setq user-mail-address "remi.griot@gmail.com")
+(setq frame-title-format '(buffer-file-name "%F: %f" ("%F: %b")))
 #+end_src
 
 #+begin_src elisp :tangle yes

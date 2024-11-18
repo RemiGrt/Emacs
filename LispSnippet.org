@@ -58,3 +58,36 @@
 
 #+RESULTS:
 : remi-info-buffer
+
+* Select current line
+From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp.pdf
+
+#+begin_src elisp
+(defun select-current-line ()
+"Select the current line"
+(interactive)
+(let ((pos (line-beginning-position)))
+(end-of-line)
+(set-mark pos)))
+#+end_src
+
+#+RESULTS:
+: select-current-line
+
+
+https://irfu.cea.fr/Pisp/frederic.galliano/
+
+#+begin_src elisp
+  (defun select-current-word ()
+  "Select the word under cursor.
+  “word” here is considered any alphanumeric sequence with “_” or “-”."
+  (interactive)
+  (let (pt)
+  (skip-chars-backward "-_A-Za-z0-9")
+  (setq pt (point))
+  (skip-chars-forward "-_A-Za-z0-9")
+  (set-mark pt)))
+#+end_src
+
+#+RESULTS:
+: select-current-word
