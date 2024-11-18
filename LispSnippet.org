@@ -21,21 +21,21 @@
 #+RESULTS:
 : load-init
 
-* Write to a file
+* Write to a buffer
 #+begin_src elisp
   (get-buffer-create "Remi")
-  (defun remi-file-info(filename)
+  (defun remi-write-buffer(filename)
   " Give some infos"
   (interactive "fFile name: ")
   (with-current-buffer "Remi"
     (goto-char (point-max))
-  ;;(insert "Nombre de ligne is %s" count-lines-pages(filename))))
-    (insert "Nombre de ligne is " ))))
+    (insert "Hello World " ))))
 #+end_src
 
 #+RESULTS:
 : remi-file-info
 
+* Echo current buffer
 #+begin_src elisp
 (defun echo-current-buffer-filename (f)
   (interactive (list (buffer-file-name)))
@@ -44,3 +44,17 @@
 
 #+RESULTS:
 : echo-current-buffer-filename
+
+*
+#+begin_src elisp
+      (defun remi-info-buffer(filename)
+	(interactive "fFile name: ")
+	(switch-to-buffer (find-file-noselect filename))
+	(count-words ())
+	)
+  ;;	(with-current-buffer (find-file-noselect filename)))
+
+#+end_src
+
+#+RESULTS:
+: remi-info-buffer
