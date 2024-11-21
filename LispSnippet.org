@@ -112,3 +112,17 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 #+RESULTS:
 : select-current-word
+
+* Modify the content of a file
+#+begin_src elisp
+  (let ((buff (find-file-noselect "./sample.txt")))
+    (with-current-buffer buff
+      (goto-char (point-min))
+      (insert "blablba\n")
+      (goto-char (point-max))
+      (insert "blablba\n")
+      (save-buffer))
+    (kill-buffer buff))
+#+end_src
+
+#+RESULTS:

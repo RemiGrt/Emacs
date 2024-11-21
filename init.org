@@ -55,7 +55,6 @@
 #+end_src
 
 
-
 * Startup, Visual, General Conf
 #+begin_src elisp :tangle yes
   (setq user-mail-address "remi.griot@gmail.com")
@@ -187,4 +186,10 @@
   "Fonction chargeant le fichier de ini.el"
   (interactive)
     (load-file (concat user-emacs-directory "init.el")))
+#+end_src
+* BFS Browse File
+Il faut le fichier https://github.com/tonyaldon/bfs/tree/master
+#+begin_src elisp :tangle yes
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'bfs)
 #+end_src
