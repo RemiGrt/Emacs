@@ -1,7 +1,13 @@
 - C-c C-c: Evaluate block code, le resutat s'affiche en tant que bloc result
 - C-x C-e: Evalue une ligne lisp (dans n'importe quel buffer, le resultat est dans mini buffer
 - C-j : Evalue dans scratch pad
-  
+
+* Biblio
+
+https://www.youtube.com/@tonyaldon/videos
+https://irfu.cea.fr/Pisp/frederic.galliano/
+
+
 * Affiche le repertoire de conf. d'Emacs
 #+begin_src elisp 
 (message user-emacs-directory)
@@ -37,38 +43,52 @@
 
 * Echo current buffer
 #+begin_src elisp
-(defun echo-current-buffer-filename (f)
-  (interactive (list (buffer-file-name)))
-  (message "Current buffer filename is %s" f))
+  (defun echo-current-buffer-filename (f)
+    (interactive (list (buffer-file-name)))
+;;    (message "Current buffer filename is %s" f)
+    (message "bla " ))
+    
 #+end_src
 
 #+RESULTS:
 : echo-current-buffer-filename
 
-*
+* Select and open file
 #+begin_src elisp
-      (defun remi-info-buffer(filename)
+      (defun remi-select-file (filename)
 	(interactive "fFile name: ")
 	(switch-to-buffer (find-file-noselect filename))
-	(count-words ())
 	)
-  ;;	(with-current-buffer (find-file-noselect filename)))
-
 #+end_src
 
 #+RESULTS:
-: remi-info-buffer
+: remi-select-file
+* Process File
+#+begin_src elisp
+  (defun remi-process-file (filename)
+    (interactive  "fFile name: ")
+    (remi-select-file filename)
+    (setq firstword (buffer-substring 0 2))
+    (setq info (list (count-lines-page) "blabla" firstword))
+    (message "%S" info)
+    )
+#+end_src
+
+
+#+RESULTS:
+: remi-process-file
 
 * Select current line
 From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp.pdf
 
 #+begin_src elisp
-(defun select-current-line ()
-"Select the current line"
-(interactive)
-(let ((pos (line-beginning-position)))
-(end-of-line)
-(set-mark pos)))
+  (defun select-current-line ()
+  "Select the current line"
+  (interactive)
+  (let ((pos (line-beginning-position)))
+  (end-of-line)
+  (set-mark pos))
+  )
 #+end_src
 
 #+RESULTS:
@@ -77,6 +97,7 @@ From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp.pdf
 
 https://irfu.cea.fr/Pisp/frederic.galliano/
 
+* Select Curent Word
 #+begin_src elisp
   (defun select-current-word ()
   "Select the word under cursor.
