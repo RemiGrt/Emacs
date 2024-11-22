@@ -1,7 +1,8 @@
 - C-c C-c: Evaluate block code, le resutat s'affiche en tant que bloc result
 - C-x C-e: Evalue une ligne lisp (dans n'importe quel buffer, le resultat est dans mini buffer
 - C-j : Evalue dans scratch pad
-
+- C-h k key-sequence
+  
 * Biblio
 
 https://www.youtube.com/@tonyaldon/videos
@@ -129,8 +130,12 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 * Store current word
 #+begin_src elisp
-(defun remi-func ()
-  (interactive)
-  (setq myreg (current-word))
-  (message myreg))
+  (defun remi-func ()
+    "Display occurence of current word"
+    (interactive)
+    (setq myreg (current-word))
+    (message "%s: %s" myreg (how-many myreg)))
 #+end_src
+
+#+RESULTS:
+: remi-func
