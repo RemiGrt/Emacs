@@ -126,3 +126,11 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+end_src
 
 #+RESULTS:
+
+* Store current word
+#+begin_src elisp
+(defun remi-func ()
+  (interactive)
+  (setq myreg (current-word))
+  (message myreg))
+#+end_src
