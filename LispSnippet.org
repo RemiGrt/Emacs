@@ -128,14 +128,26 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 #+RESULTS:
 
-* Store current word
+* Display occurence of current word
 #+begin_src elisp
-  (defun remi-func ()
+  (defun remi-occurence ()
     "Display occurence of current word"
     (interactive)
     (setq myreg (current-word))
     (message "%s: %s" myreg (how-many myreg)))
 #+end_src
 
+* Flush lines
+#+begin_src elisp
+  (defun remi-flush ()
+    "Display occurence of current word"
+    (interactive)
+    (setq myreg (current-word))
+    (flush-lines myreg))
+#+end_src
+
 #+RESULTS:
-: remi-func
+: remi-flush
+
+
+
