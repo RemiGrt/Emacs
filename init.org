@@ -179,14 +179,29 @@
 * Personnal Function
 
 #+begin_src elisp :tangle yes
-  ;;
-  ;; First funtion
-  ;;
-  (defun load-init()
-  "Fonction chargeant le fichier de ini.el"
-  (interactive)
-    (load-file (concat user-emacs-directory "init.el")))
+    ;;
+    ;; Load init.el
+    ;;
+    (defun rg-load-init()
+    "Fonction chargeant le fichier de ini.el"
+    (interactive)
+      (load-file (concat user-emacs-directory "init.el")))
+    ;;
+    ;; Create term
+    ;;
+      (defun rg-create-term ()
+      " Create term"
+      (interactive)
+      (split-window-right)
+      (windmove-right)
+      (term "/bin/bash"))
+
+  (global-set-key (kbd "C-<f1>")  'rg-create-term)
 #+end_src
+
+#+RESULTS:
+: rg-create-term
+
 * BFS Browse File
 Il faut le fichier https://github.com/tonyaldon/bfs/tree/master
 #+begin_src elisp :tangle yes

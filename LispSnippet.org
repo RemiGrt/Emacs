@@ -149,5 +149,14 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 : remi-flush
 
+#+begin_src elisp
+  (defun remi-create-term ()
+    " Create term"
+    (interactive)
+    (split-window-right)
+    (windmove-right)
+    (term "/bin/bash"))
+#+end_src
 
-
+#+RESULTS:
+: remi-create-term
