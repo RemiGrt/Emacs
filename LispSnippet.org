@@ -1,3 +1,5 @@
+#+PROPERTY: header-args :tangle ./LispSnippet.el
+
 - C-c C-c: Evaluate block code, le resutat s'affiche en tant que bloc result
 - C-x C-e: Evalue une ligne lisp (dans n'importe quel buffer, le resultat est dans mini buffer
 - C-j : Evalue dans scratch pad
@@ -10,7 +12,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 
 * Affiche le repertoire de conf. d'Emacs
-#+begin_src elisp 
+#+begin_src elisp :tangle yes 
 (message user-emacs-directory)
 #+end_src
 
@@ -18,8 +20,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : ~/.emacs.d/
 
 * Load init.el
-#+begin_src elisp
-  (defun remi-load-init()
+#+begin_src elisp :tangle yes
+  (defun rg-load-init()
   "Fonction chargeant le fichier de ini.el"
   (interactive)
     (load-file (concat user-emacs-directory "init.el")))
@@ -29,9 +31,9 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : load-init
 
 * Write to a buffer
-#+begin_src elisp
+#+begin_src elisp :tangle yes
   (get-buffer-create "Remi")
-  (defun remi-write-buffer(filename)
+  (defun rg-write-buffer(filename)
   " Give some infos"
   (interactive "fFile name: ")
   (with-current-buffer "Remi"
@@ -43,8 +45,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : remi-file-info
 
 * Echo current buffer
-#+begin_src elisp
-  (defun echo-current-buffer-filename (f)
+#+begin_src elisp :tangle yes
+  (defun rg-echo-current-buffer-filename (f)
     (interactive (list (buffer-file-name)))
 ;;    (message "Current buffer filename is %s" f)
     (message "bla " ))
@@ -55,8 +57,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : echo-current-buffer-filename
 
 * Select and open file
-#+begin_src elisp
-      (defun remi-select-file (filename)
+#+begin_src elisp :tangle yes
+      (defun rg-select-file (filename)
 	(interactive "fFile name: ")
 	(switch-to-buffer (find-file-noselect filename))
 	)
@@ -65,8 +67,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 : remi-select-file
 * Process File
-#+begin_src elisp
-  (defun remi-process-file (filename)
+#+begin_src elisp :tangle yes
+  (defun rg-process-file (filename)
     (interactive  "fFile name: ")
     (remi-select-file filename)
     (setq firstword (buffer-substring 0 2))
@@ -80,10 +82,10 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : remi-process-file
 
 * Select current line
-From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp.pdf
+From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp :tangle yes.pdf
 
-#+begin_src elisp
-  (defun select-current-line ()
+#+begin_src elisp :tangle yes
+  (defun rg-select-current-line ()
   "Select the current line"
   (interactive)
   (let ((pos (line-beginning-position)))
@@ -99,8 +101,8 @@ From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp.pdf
 https://irfu.cea.fr/Pisp/frederic.galliano/
 
 * Select Curent Word
-#+begin_src elisp
-  (defun select-current-word ()
+#+begin_src elisp :tangle yes
+  (defun rg-select-current-word ()
   "Select the word under cursor.
   “word” here is considered any alphanumeric sequence with “_” or “-”."
   (interactive)
@@ -115,7 +117,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : select-current-word
 
 * Modify the content of a file
-#+begin_src elisp
+#+begin_src elisp :tangle yes
   (let ((buff (find-file-noselect "./sample.txt")))
     (with-current-buffer buff
       (goto-char (point-min))
@@ -129,8 +131,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 
 * Display occurence of current word
-#+begin_src elisp
-  (defun remi-occurence ()
+#+begin_src elisp :tangle yes
+  (defun rg-occurence ()
     "Display occurence of current word"
     (interactive)
     (setq myreg (current-word))
@@ -138,8 +140,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+end_src
 
 * Flush lines
-#+begin_src elisp
-  (defun remi-flush ()
+#+begin_src elisp :tangle yes
+  (defun rg-flush ()
     "Display occurence of current word"
     (interactive)
     (setq myreg (current-word))
@@ -149,8 +151,8 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 : remi-flush
 
-#+begin_src elisp
-  (defun remi-create-term ()
+#+begin_src elisp :tangle yes
+  (defun rg-create-term ()
     " Create term"
     (interactive)
     (split-window-right)
