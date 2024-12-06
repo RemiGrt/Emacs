@@ -177,30 +177,10 @@
 #+end_src
 
 * Personnal Function
-
 #+begin_src elisp :tangle yes
-    ;;
-    ;; Load init.el
-    ;;
-    (defun rg-load-init()
-    "Fonction chargeant le fichier de ini.el"
-    (interactive)
-      (load-file (concat user-emacs-directory "init.el")))
-    ;;
-    ;; Create term
-    ;;
-      (defun rg-create-term ()
-      " Create term"
-      (interactive)
-      (split-window-right)
-      (windmove-right)
-      (term "/bin/bash"))
-
-  (global-set-key (kbd "C-<f1>")  'rg-create-term)
+(load-file "~/.emacs.d/lisp/LispSnippet.el")
 #+end_src
 
-#+RESULTS:
-: rg-create-term
 
 * BFS Browse File
 Il faut le fichier https://github.com/tonyaldon/bfs/tree/master
@@ -208,3 +188,6 @@ Il faut le fichier https://github.com/tonyaldon/bfs/tree/master
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'bfs)
 #+end_src
+
+#+RESULTS:
+: bfs

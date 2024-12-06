@@ -151,6 +151,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 : remi-flush
 
+* Create term
 #+begin_src elisp :tangle yes
   (defun rg-create-term ()
     " Create term"
@@ -162,3 +163,10 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 #+RESULTS:
 : remi-create-term
+
+* Liste des fichiers terminant en .txt dans le dossier courant
+#+begin_src elisp :tangle yes
+(directory-files "." t ".txt$")
+#+end_src
+
+https://gigamonkeys.com/book/
