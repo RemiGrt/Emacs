@@ -181,7 +181,9 @@ https://gigamonkeys.com/book/
     (insert "Paf!\n")
     (goto-char(point-max))
     (insert "Pouf!\n")
-    (save-buffer))
+    (save-buffer)
+
+)
   (kill-buffer buff)))
 #+end_src
 

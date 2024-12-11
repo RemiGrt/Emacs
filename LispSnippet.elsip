@@ -1,0 +1,16 @@
+(defun rg-modify-file (filename)
+(interactive "fFile to insert into:")
+(let ((buff (find-file-noselect filename)))
+  (with-current-buffer buff
+    (goto-char(point-min))
+    (insert "Paf!\n")
+    (goto-char(point-max))
+    (insert "Pouf!\n")
+    (save-buffer))
+  (kill-buffer buff)))
+
+(defun rg-insert-file-string (file str)
+  "Insert string into chosen file."
+  (interactive "fFile to insert into: \nsString to insert: ")
+  (with-temp-file file
+    (insert str)))
