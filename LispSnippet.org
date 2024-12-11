@@ -181,7 +181,9 @@ https://gigamonkeys.com/book/
     (insert "Paf!\n")
     (goto-char(point-max))
     (insert "Pouf!\n")
-    (save-buffer))
+    (save-buffer)
+
+)
   (kill-buffer buff)))
 #+end_src
 
@@ -191,4 +193,29 @@ https://gigamonkeys.com/book/
   (interactive "fFile to insert into: \nsString to insert: ")
   (with-temp-file file
     (insert str)))
+#+end_src
+
+
+#+begin_src  elsip :tangle yes
+(require 's)
+
+(defun pk/sort-words-in-region (beg end &optional reversed)
+  "In active region sort words alphabetically in ascending order.
+With prefix argument REVERSED use descending order.
+Don't use this function on regions with nested brackets."
+  (interactive "r\nP")
+  (unless (region-active-p) (user-error "No active region to sort!"))
+  (let* ((str (s-trim (buffer-substring-no-properties beg end)))
+         (com (string-match-p "," str))
+         (cln (replace-regexp-in-string "[\]\[(){}\']+\\|\\.$" "" str))
+         (wrd (split-string cln (if com "," " ") t " "))
+         (new (s-join (if com ", " " ")
+                      (sort wrd (if reversed #'string> #'string<)))))
+    (save-excursion
+      (goto-char beg)
+      (delete-region beg end)
+      (when (and (looking-back "[^ ]") (not (s-starts-with? " " str)))
+          (insert " "))
+      (insert
+       (replace-regexp-in-string "[^\]\[(){}\'\.]+" new str)))))
 #+end_src
