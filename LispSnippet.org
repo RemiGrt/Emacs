@@ -228,11 +228,12 @@ Don't use this function on regions with nested brackets."
   (with-current-buffer buff
     (beginning-of-buffer)
     (setq list-reg '())
-    (search-forward "tata")
-    (end-of-line)
-    (backward-word)
-    (setq val-reg (thing-at-point 'word))
-    (add-to-list 'list-reg val-reg t)
-    (push 'list-reg val-reg)
+    (while (search-forward "reg1" nil t)
+      (end-of-line)
+      (backward-word)
+      (setq val-reg (thing-at-point 'word))
+      (add-to-list 'list-reg val-reg t)
+      (push 'list-reg val-reg))
+    (message (format "%s" list-reg))
     (buffer-string))))
 #+end_src		 

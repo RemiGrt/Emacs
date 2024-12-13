@@ -78,3 +78,20 @@
   (term "/bin/bash"))
 
 (directory-files "." t ".txt$")
+
+
+(defun rg-push-reg-value (filename)
+(interactive "fFile to insert into:")
+(let ((buff (find-file-noselect filename)))
+  (with-current-buffer buff
+    (beginning-of-buffer)
+    (setq list-reg '())
+    (while (search-forward "reg1" nil t)
+      (end-of-line)
+      (backward-word)
+      (setq val-reg (thing-at-point 'word))
+      (add-to-list 'list-reg val-reg t)
+      (push 'list-reg val-reg))
+    (message (format "%s" list-reg))
+    (buffer-string))))
+

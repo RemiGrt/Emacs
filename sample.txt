@@ -1,4 +1,5 @@
 blablba
+blablba
 Paf!
 Paf!
 blablba
@@ -22,6 +23,9 @@ tutu	g7
 tata	A33
 arthur	12a
 
+reg1 AA
+
+reg1 BB
 
 
 https://fabiensanglard.net/c/
@@ -31,5 +35,10 @@ blablba
 blablba
 blablba
 Pouf!
+
+reg1 CC
 Pouf!
 blablba
+blablba
+
+reg1 DD
