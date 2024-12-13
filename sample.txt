@@ -1,13 +1,35 @@
 blablba
-tata
-tutu
-tata
-remi
-arthur
-remi
+Paf!
+Paf!
+blablba
+blablba
+blablba
+blablba	10
+tata	A3
+tutu	g7
+tata	A33
+arthur	12
+
+blablba	10
+tata	A3
+tutu	g7
+tata	A23
+arthur	12
+
+blablba	10r
+tata	AA
+tutu	g7
+tata	A33
+arthur	12a
 
 
 
 https://fabiensanglard.net/c/
 
 myreg
+blablba
+blablba
+blablba
+Pouf!
+Pouf!
+blablba

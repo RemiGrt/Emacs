@@ -54,11 +54,10 @@
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 #+end_src
 
-
 * Startup, Visual, General Conf
 #+begin_src elisp :tangle yes
   (setq user-mail-address "remi.griot@gmail.com")
-(setq frame-title-format '(buffer-file-name "%F: %f" ("%F: %b")))
+  (setq frame-title-format '(buffer-file-name "%F: %f" ("%F: %b")))
 #+end_src
 
 #+begin_src elisp :tangle yes

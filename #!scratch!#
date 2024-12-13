@@ -1,0 +1,35 @@
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with C-x C-f and enter text in its buffer.
+
+(let ((buff (find-file-noselect "./tata")))
+  (with-current-buffer buff
+    (goto-char(point-min))
+    (insert "Paf!\n")
+    (goto-char(point-max))
+    (insert "Pouf!\n")
+    (save-buffer))
+  (kill-buffer buff))
+t
+
+t
+
+
+
+
+
+(defun rg-modify-file (filename)
+(interactive "fFile to insert into:")
+(let ((buff (find-file-noselect filename)))
+  (with-current-buffer buff
+    (goto-char(point-min))
+    (insert "Paf!\n")
+    (flush-lines "remi")
+    (goto-char(point-max))
+    (insert "Pouf!\n")
+    (save-buffer)
+    )
+  (kill-buffer buff)))
+rg-modify-file
+
+rg-modify-file
+

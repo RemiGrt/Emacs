@@ -11,7 +11,7 @@
 (interactive "fFile name: ")
 (with-current-buffer "Remi"
   (goto-char (point-max))
-  (insert "Hello World " ))))
+  (insert "Hello World " )))
 
 (defun rg-echo-current-buffer-filename (f)
     (interactive (list (buffer-file-name)))
@@ -25,7 +25,7 @@
 
 (defun rg-process-file (filename)
   (interactive  "fFile name: ")
-  (remi-select-file filename)
+  (rg-select-file filename)
   (setq firstword (buffer-substring 0 2))
   (setq info (list (count-lines-page) "blabla" firstword))
   (message "%S" info)
@@ -76,3 +76,5 @@
   (split-window-right)
   (windmove-right)
   (term "/bin/bash"))
+
+(directory-files "." t ".txt$")

@@ -38,7 +38,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
   (interactive "fFile name: ")
   (with-current-buffer "Remi"
     (goto-char (point-max))
-    (insert "Hello World " ))))
+    (insert "Hello World " )))
 #+end_src
 
 #+RESULTS:
@@ -58,10 +58,10 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 * Select and open file
 #+begin_src elisp :tangle yes
-      (defun rg-select-file (filename)
-	(interactive "fFile name: ")
-	(switch-to-buffer (find-file-noselect filename))
-	)
+  (defun rg-select-file (filename)
+    (interactive "fFile name: ")
+    (switch-to-buffer (find-file-noselect filename))
+    )
 #+end_src
 
 #+RESULTS:
@@ -70,7 +70,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+begin_src elisp :tangle yes
   (defun rg-process-file (filename)
     (interactive  "fFile name: ")
-    (remi-select-file filename)
+    (rg-select-file filename)
     (setq firstword (buffer-substring 0 2))
     (setq info (list (count-lines-page) "blabla" firstword))
     (message "%S" info)
@@ -170,3 +170,68 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+end_src
 
 https://gigamonkeys.com/book/
+
+* modify file
+#+begin_src  elsip :tangle yes
+(defun rg-modify-file (filename)
+(interactive "fFile to insert into:")
+(let ((buff (find-file-noselect filename)))
+  (with-current-buffer buff
+    (goto-char(point-min))
+    (insert "Paf!\n")
+    (goto-char(point-max))
+    (insert "Pouf!\n")
+    (save-buffer)
+
+)
+  (kill-buffer buff)))
+#+end_src
+
+#+begin_src  elsip :tangle yes
+(defun rg-insert-file-string (file str)
+  "Insert string into chosen file."
+  (interactive "fFile to insert into: \nsString to insert: ")
+  (with-temp-file file
+    (insert str)))
+#+end_src
+
+* In active region sort words alphabetically in ascending order.
+#+begin_src  elsip :tangle yes
+(require 's)
+
+(defun pk/sort-words-in-region (beg end &optional reversed)
+  "In active region sort words alphabetically in ascending order.
+With prefix argument REVERSED use descending order.
+Don't use this function on regions with nested brackets."
+  (interactive "r\nP")
+  (unless (region-active-p) (user-error "No active region to sort!"))
+  (let* ((str (s-trim (buffer-substring-no-properties beg end)))
+         (com (string-match-p "," str))
+         (cln (replace-regexp-in-string "[\]\[(){}\']+\\|\\.$" "" str))
+         (wrd (split-string cln (if com "," " ") t " "))
+         (new (s-join (if com ", " " ")
+                      (sort wrd (if reversed #'string> #'string<)))))
+    (save-excursion
+      (goto-char beg)
+      (delete-region beg end)
+      (when (and (looking-back "[^ ]") (not (s-starts-with? " " str)))
+          (insert " "))
+      (insert
+       (replace-regexp-in-string "[^\]\[(){}\'\.]+" new str)))))
+#+end_src
+
+
+#+begin_src  elsip :tangle yes
+(setq  xx "Big text")
+
+(with-temp-buffer(insert xx)
+		 (insert "\n")
+		 (insert xx)
+		 (beginning-of-buffer)
+;;		 (flush-lines "text")
+		 (search-forward "text")
+		 (insert "ici")
+		 (setq ww (thing-at-point 'word))
+		 (insert ww)
+		 (buffer-string))
+#+end_src		 
