@@ -195,7 +195,7 @@ https://gigamonkeys.com/book/
     (insert str)))
 #+end_src
 
-
+* In active region sort words alphabetically in ascending order.
 #+begin_src  elsip :tangle yes
 (require 's)
 
@@ -219,3 +219,19 @@ Don't use this function on regions with nested brackets."
       (insert
        (replace-regexp-in-string "[^\]\[(){}\'\.]+" new str)))))
 #+end_src
+
+
+#+begin_src  elsip :tangle yes
+(setq  xx "Big text")
+
+(with-temp-buffer(insert xx)
+		 (insert "\n")
+		 (insert xx)
+		 (beginning-of-buffer)
+;;		 (flush-lines "text")
+		 (search-forward "text")
+		 (insert "ici")
+		 (setq ww (thing-at-point 'word))
+		 (insert ww)
+		 (buffer-string))
+#+end_src		 
