@@ -222,16 +222,17 @@ Don't use this function on regions with nested brackets."
 
 
 #+begin_src  elsip :tangle yes
-(setq  xx "Big text")
-
-(with-temp-buffer(insert xx)
-		 (insert "\n")
-		 (insert xx)
-		 (beginning-of-buffer)
-;;		 (flush-lines "text")
-		 (search-forward "text")
-		 (insert "ici")
-		 (setq ww (thing-at-point 'word))
-		 (insert ww)
-		 (buffer-string))
+(defun rg-push-reg-value (filename)
+(interactive "fFile to insert into:")
+(let ((buff (find-file-noselect filename)))
+  (with-current-buffer buff
+    (beginning-of-buffer)
+    (setq list-reg '())
+    (search-forward "tata")
+    (end-of-line)
+    (backward-word)
+    (setq val-reg (thing-at-point 'word))
+    (add-to-list 'list-reg val-reg t)
+    (push 'list-reg val-reg)
+    (buffer-string))))
 #+end_src		 
