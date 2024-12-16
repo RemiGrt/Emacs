@@ -6,9 +6,7 @@
     (insert "Paf!\n")
     (goto-char(point-max))
     (insert "Pouf!\n")
-    (save-buffer)
-
-)
+    (save-buffer))
   (kill-buffer buff)))
 
 (defun rg-insert-file-string (file str)
@@ -18,7 +16,6 @@
     (insert str)))
 
 (require 's)
-
 (defun pk/sort-words-in-region (beg end &optional reversed)
   "In active region sort words alphabetically in ascending order.
 With prefix argument REVERSED use descending order.
@@ -38,17 +35,3 @@ Don't use this function on regions with nested brackets."
           (insert " "))
       (insert
        (replace-regexp-in-string "[^\]\[(){}\'\.]+" new str)))))
-
-(defun rg-push-reg-value (filename)
-(interactive "fFile to insert into:")
-(let ((buff (find-file-noselect filename)))
-  (with-current-buffer buff
-    (beginning-of-buffer)
-    (setq list-reg '())
-    (search-forward "tata")
-    (end-of-line)
-    (backward-word)
-    (setq val-reg (thing-at-point 'word))
-    (add-to-list 'list-reg val-reg t)
-    (push 'list-reg val-reg)
-    (buffer-string))))

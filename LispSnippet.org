@@ -12,7 +12,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 
 * Affiche le repertoire de conf. d'Emacs
-#+begin_src elisp :tangle yes 
+#+begin_src emacs-lisp :tangle yes 
 (message user-emacs-directory)
 #+end_src
 
@@ -20,7 +20,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : ~/.emacs.d/
 
 * Load init.el
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-load-init()
   "Fonction chargeant le fichier de ini.el"
   (interactive)
@@ -31,7 +31,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : load-init
 
 * Write to a buffer
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (get-buffer-create "Remi")
   (defun rg-write-buffer(filename)
   " Give some infos"
@@ -45,7 +45,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : remi-file-info
 
 * Echo current buffer
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-echo-current-buffer-filename (f)
     (interactive (list (buffer-file-name)))
 ;;    (message "Current buffer filename is %s" f)
@@ -57,7 +57,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : echo-current-buffer-filename
 
 * Select and open file
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-select-file (filename)
     (interactive "fFile name: ")
     (switch-to-buffer (find-file-noselect filename))
@@ -67,7 +67,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 : remi-select-file
 * Process File
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-process-file (filename)
     (interactive  "fFile name: ")
     (rg-select-file filename)
@@ -84,7 +84,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 * Select current line
 From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp :tangle yes.pdf
 
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-select-current-line ()
   "Select the current line"
   (interactive)
@@ -101,7 +101,7 @@ From https://irfu.cea.fr/Pisp/frederic.galliano//Computing/manual_elisp :tangle 
 https://irfu.cea.fr/Pisp/frederic.galliano/
 
 * Select Curent Word
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-select-current-word ()
   "Select the word under cursor.
   “word” here is considered any alphanumeric sequence with “_” or “-”."
@@ -117,7 +117,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : select-current-word
 
 * Modify the content of a file
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (let ((buff (find-file-noselect "./sample.txt")))
     (with-current-buffer buff
       (goto-char (point-min))
@@ -131,7 +131,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+RESULTS:
 
 * Display occurence of current word
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-occurence ()
     "Display occurence of current word"
     (interactive)
@@ -140,7 +140,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 #+end_src
 
 * Flush lines
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-flush ()
     "Display occurence of current word"
     (interactive)
@@ -152,7 +152,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : remi-flush
 
 * Create term
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
   (defun rg-create-term ()
     " Create term"
     (interactive)
@@ -165,7 +165,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 : remi-create-term
 
 * Liste des fichiers terminant en .txt dans le dossier courant
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
 (directory-files "." t ".txt$")
 #+end_src
 
@@ -181,9 +181,7 @@ https://gigamonkeys.com/book/
     (insert "Paf!\n")
     (goto-char(point-max))
     (insert "Pouf!\n")
-    (save-buffer)
-
-)
+    (save-buffer))
   (kill-buffer buff)))
 #+end_src
 
@@ -198,7 +196,6 @@ https://gigamonkeys.com/book/
 * In active region sort words alphabetically in ascending order.
 #+begin_src  elsip :tangle yes
 (require 's)
-
 (defun pk/sort-words-in-region (beg end &optional reversed)
   "In active region sort words alphabetically in ascending order.
 With prefix argument REVERSED use descending order.
@@ -221,7 +218,7 @@ Don't use this function on regions with nested brackets."
 #+end_src
 
 
-#+begin_src  elsip :tangle yes
+#+begin_src  emacs-lisp :tangle yes
 (defun rg-push-reg-value (filename)
 (interactive "fFile to insert into:")
 (let ((buff (find-file-noselect filename)))
@@ -236,4 +233,7 @@ Don't use this function on regions with nested brackets."
       (push 'list-reg val-reg))
     (message (format "%s" list-reg))
     (buffer-string))))
-#+end_src		 
+#+end_src	 
+
+#+RESULTS:
+: rg-push-reg-value
