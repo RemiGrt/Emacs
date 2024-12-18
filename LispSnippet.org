@@ -252,7 +252,6 @@ Don't use this function on regions with nested brackets."
 * Liste des valeurs d'un registre dans un fichier (non interactive)
 #+begin_src emacs-lisp :tangle yes
     (defun rg-list-reg-value (filename regname)
-;;    (interactive "fFile to process:\nsReg to search:")
     (get-buffer-create "result")
     (with-current-buffer "result" (insert (format "%s\t%s\n" filename regname)))
     (let ((buff (find-file-noselect filename)))

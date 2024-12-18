@@ -1,16 +1,17 @@
 
-
+time : 7
 reg1 : AAA
 reg2 : BBB
 reg3 : CCC
 reg4 : DDD
 
+time : 8
 reg1 : 111
 reg2 : BB2
 reg3 : CCC
 reg4 : DDD
 
-
+time : 9
 reg1 : AAA
 reg2 : 222
 reg3 : 333
