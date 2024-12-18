@@ -172,7 +172,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 https://gigamonkeys.com/book/
 
 * modify file
-#+begin_src  elsip :tangle yes
+#+begin_src emacs-lisp :tangle yes
 (defun rg-modify-file (filename)
 (interactive "fFile to insert into:")
 (let ((buff (find-file-noselect filename)))
@@ -185,7 +185,7 @@ https://gigamonkeys.com/book/
   (kill-buffer buff)))
 #+end_src
 
-#+begin_src  elsip :tangle yes
+#+begin_src emacs-lisp :tangle yes
 (defun rg-insert-file-string (file str)
   "Insert string into chosen file."
   (interactive "fFile to insert into: \nsString to insert: ")
@@ -194,7 +194,7 @@ https://gigamonkeys.com/book/
 #+end_src
 
 * In active region sort words alphabetically in ascending order.
-#+begin_src  elsip :tangle yes
+#+begin_src emacs-lisp :tangle yes
 (require 's)
 (defun pk/sort-words-in-region (beg end &optional reversed)
   "In active region sort words alphabetically in ascending order.
@@ -218,21 +218,33 @@ Don't use this function on regions with nested brackets."
 #+end_src
 
 
-#+begin_src  emacs-lisp :tangle yes
-(defun rg-push-reg-value (filename)
-(interactive "fFile to insert into:")
-(let ((buff (find-file-noselect filename)))
-  (with-current-buffer buff
-    (beginning-of-buffer)
-    (setq list-reg '())
-    (while (search-forward "reg1" nil t)
-      (end-of-line)
-      (backward-word)
-      (setq val-reg (thing-at-point 'word))
-      (add-to-list 'list-reg val-reg t)
-      (push 'list-reg val-reg))
-    (message (format "%s" list-reg))
-    (buffer-string))))
+#+begin_src emacs-lisp :tangle yes
+    (defun rg-push-reg-value (filename regname)
+    (interactive "fFile to process:\nsReg to search:")
+    (get-buffer-create "result")
+    (with-current-buffer "result" (insert (format "%s\t%s" filename regname)))
+    (let ((buff (find-file-noselect filename)))
+      (with-current-buffer buff
+	(beginning-of-buffer)
+	(setq reglist '())
+	(while (search-forward regname nil t)
+	  (end-of-line)
+	  (backward-word)
+	  (setq regval (thing-at-point 'word))
+  ;;	(push 'reglist regval)
+	  (with-current-buffer "result"
+	    (end-of-buffer)
+	    (insert (format "%s\n" regval))
+	    )
+	  (add-to-list 'reglist regval t)
+	  )
+	(with-current-buffer "result"
+	  (end-of-buffer)
+	  (insert (format "%s\n" reglist))
+	  )
+	(message (format "%s" reglist))
+	(buffer-string))))
+
 #+end_src	 
 
 #+RESULTS:

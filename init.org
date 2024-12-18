@@ -71,7 +71,9 @@
   ;; display column and line
   (setq line-number-mode t)
   (setq column-number-mode t)
+  ;; remove tool bar
   (tool-bar-mode -1)
+  ;; display occurence during search
   (setq isearch-lazy-count t)
 #+end_src
 
@@ -178,7 +180,7 @@
 
 * Personnal Function
 #+begin_src elisp :tangle yes
-;;(load-file "~/.emacs.d/lisp/LispSnippet.el")
+(load-file "~/.emacs.d/lisp/LispSnippet.el")
 #+end_src
 
 
