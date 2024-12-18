@@ -217,12 +217,12 @@ Don't use this function on regions with nested brackets."
        (replace-regexp-in-string "[^\]\[(){}\'\.]+" new str)))))
 #+end_src
 
-
+* Liste des valeurs d'un registre dans un fichier (interactive)
 #+begin_src emacs-lisp :tangle yes
-    (defun rg-push-reg-value (filename regname)
+    (defun rg-ilist-reg-value (filename regname)
     (interactive "fFile to process:\nsReg to search:")
     (get-buffer-create "result")
-    (with-current-buffer "result" (insert (format "%s\t%s" filename regname)))
+    (with-current-buffer "result" (insert (format "%s\t%s\n" filename regname)))
     (let ((buff (find-file-noselect filename)))
       (with-current-buffer buff
 	(beginning-of-buffer)
@@ -244,8 +244,51 @@ Don't use this function on regions with nested brackets."
 	  )
 	(message (format "%s" reglist))
 	(buffer-string))))
-
 #+end_src	 
 
 #+RESULTS:
 : rg-push-reg-value
+
+* Liste des valeurs d'un registre dans un fichier (non interactive)
+#+begin_src emacs-lisp :tangle yes
+    (defun rg-list-reg-value (filename regname)
+;;    (interactive "fFile to process:\nsReg to search:")
+    (get-buffer-create "result")
+    (with-current-buffer "result" (insert (format "%s\t%s\n" filename regname)))
+    (let ((buff (find-file-noselect filename)))
+      (with-current-buffer buff
+	(beginning-of-buffer)
+	(setq reglist '())
+	(while (search-forward regname nil t)
+	  (end-of-line)
+	  (backward-word)
+	  (setq regval (thing-at-point 'word))
+	  (with-current-buffer "result"
+	    (end-of-buffer)
+	    (insert (format "%s\n" regval))
+	    )
+	  (add-to-list 'reglist regval t)
+	  )
+	(with-current-buffer "result"
+	  (end-of-buffer)
+	  (insert (format "%s\n" reglist))
+	  )
+	(message (format "%s" reglist))
+	(buffer-string))))
+#+end_src	 
+
+#+RESULTS:
+: rg-list-reg-value
+
+* Liste des valeurs d'un registre dans les fichies text d'un dossier
+#+begin_src emacs-lisp :tangle yes 
+(defun rg-list-reg-dir (dir)
+  (interactive "Dfolder:") 
+  (setq filelist (directory-files dir t ".txt$"))
+  (dolist (p filelist)
+    (rg-list-reg-value p "reg1"))
+  )
+#+end_src
+
+#+RESULTS:
+: rg-list-reg-dir
