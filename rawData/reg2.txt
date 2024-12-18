@@ -1,0 +1,17 @@
+
+
+reg1 : EEE
+reg2 : FFF
+reg3 : GGG
+reg4 : HHH
+
+reg1 : JJJ
+reg2 : KKK
+reg3 : LLL
+reg4 : MMM
+
+
+reg1 : NNN
+reg2 : OOO
+reg3 : PPP
+reg4 : QQQ

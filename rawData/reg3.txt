@@ -1,0 +1,17 @@
+
+
+reg1 : RRR
+reg2 : SSS
+reg3 : TTT
+reg4 : UUU
+
+reg1 : VVV
+reg2 : WWW
+reg3 : XXX
+reg4 : YYY
+
+
+reg1 : ZZZ
+reg2 : 123
+reg3 : 456
+reg4 : 789
