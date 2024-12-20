@@ -32,7 +32,7 @@ https://irfu.cea.fr/Pisp/frederic.galliano/
 
 * Write to a buffer
 #+begin_src emacs-lisp :tangle yes
-  (get-buffer-create "Remi")
+  ;;(get-buffer-create "Remi")
   (defun rg-write-buffer(filename)
   " Give some infos"
   (interactive "fFile name: ")

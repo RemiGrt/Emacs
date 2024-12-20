@@ -7,51 +7,51 @@
 
 * Package
 #+begin_src elisp :tangle yes
-;;
-;; Melpa Package
-;;
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  ;;
+  ;; Melpa Package
+  ;;
+  (add-to-list 'package-archives
+	       '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 #+end_src
 
 * Calendar
 #+begin_src elisp :tangle yes
-;;
-;; calendar start on monday
-;;
-(setq calendar-week-start-day 1)
-;; Display Week
-(setq calendar-intermonth-text
-      '(propertize
-        (format "%2d"
-                (car
-                 (calendar-iso-from-absolute
-                  (calendar-absolute-from-gregorian (list month day year)))))
-        'font-lock-face 'font-lock-warning-face))
+  ;;
+  ;; calendar start on monday
+  ;;
+  (setq calendar-week-start-day 1)
+  ;; Display Week
+  (setq calendar-intermonth-text
+	'(propertize
+	  (format "%2d"
+		  (car
+		   (calendar-iso-from-absolute
+		    (calendar-absolute-from-gregorian (list month day year)))))
+	  'font-lock-face 'font-lock-warning-face))
 
-(setq calendar-intermonth-header
-      (propertize "Wk"                  ; or e.g. "KW" in Germany
-                  'font-lock-face 'font-lock-keyword-face))
+  (setq calendar-intermonth-header
+	(propertize "Wk"                  ; or e.g. "KW" in Germany
+		    'font-lock-face 'font-lock-keyword-face))
 #+end_src
 
 * WindMove & Shrink Windows
 #+begin_src elisp :tangle yes
-;;
-;; WindMove
-;;
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)  
-(global-set-key (kbd "C-c <down>")  'windmove-down)
+  ;;
+  ;; WindMove
+  ;;
+  (global-set-key (kbd "C-c <left>")  'windmove-left)
+  (global-set-key (kbd "C-c <right>") 'windmove-right)
+  (global-set-key (kbd "C-c <up>")    'windmove-up)  
+  (global-set-key (kbd "C-c <down>")  'windmove-down)
 #+end_src
 
 
 #+begin_src elisp :tangle yes
-;; resize buffer
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
+  ;; resize buffer
+  (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+  (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+  (global-set-key (kbd "S-C-<down>") 'shrink-window)
+  (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 #+end_src
 
 * Startup, Visual, General Conf
@@ -84,22 +84,22 @@
 - ^ parent folder
 
 #+begin_src elisp :tangle yes
-;;
-;; Dired
-;;
-(put 'dired-find-alternate-file 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(multiple-cursors magit)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;;
+  ;; Dired
+  ;;
+  (put 'dired-find-alternate-file 'disabled nil)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages '(multiple-cursors magit)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
 #+end_src
 
 * Shell
@@ -108,21 +108,21 @@
   ;;
   ;; Shell
   ;;
-(use-package eterm-256color
-  :hook (term-mode . eterm-256color-mode))
+  (use-package eterm-256color
+    :hook (term-mode . eterm-256color-mode))
 #+end_src
 
 * Multiple Cursor 
 #+begin_src elisp :tangle yes
-;;
-;; Multiple Cursor test 0
-;; M-x package-install multiple-cursors
-;; https://github.com/magnars/multiple-cursors.el
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+  ;;
+  ;; Multiple Cursor test 0
+  ;; M-x package-install multiple-cursors
+  ;; https://github.com/magnars/multiple-cursors.el
+  (require 'multiple-cursors)
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 #+end_src
 
 * Tangle on save (not working)
@@ -130,13 +130,13 @@
   ;; 
   ;; Automatically tangle our  config file when we save it test
   ;;
-      (defun efs/org-babel-tangle-config ()
-	(when (string-equal (buffer-file-name)
-			    (expand-file-name "./init.el"))
-	  ;; Dynamic scoping to the rescue
-	  (let ((org-confirm-babel-evaluate nil))
-	    (org-babel-tangle))))
-      (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+  (defun efs/org-babel-tangle-config ()
+    (when (string-equal (buffer-file-name)
+			(expand-file-name "./init.el"))
+      ;; Dynamic scoping to the rescue
+      (let ((org-confirm-babel-evaluate nil))
+	(org-babel-tangle))))
+  (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 #+end_src
 
 * Magit
@@ -160,10 +160,10 @@
   ;;
   ;; Mardown
   ;;
-(use-package markdown-mode
-  :ensure t
-  :mode ("README\\.md\\'" . gfm-mode)
-  :init (setq markdown-command "multimarkdown"))
+  (use-package markdown-mode
+    :ensure t
+    :mode ("README\\.md\\'" . gfm-mode)
+    :init (setq markdown-command "multimarkdown"))
 #+end_src
 
 * Tcl Mode
@@ -171,25 +171,38 @@
   ;;
   ;; Tcl Mode for some files
   ;;
-(setq auto-mode-alist (cons '("\\.tcl$" . tcl-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.do$" . tcl-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.qsf$" . tcl-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.sdc$" . tcl-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.xdc$" . tcl-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.tcl$" . tcl-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.do$" . tcl-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.qsf$" . tcl-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.sdc$" . tcl-mode) auto-mode-alist))
+  (setq auto-mode-alist (cons '("\\.xdc$" . tcl-mode) auto-mode-alist))
 #+end_src
 
 * Personnal Function
 #+begin_src elisp :tangle yes
-(load-file "~/.emacs.d/lisp/LispSnippet.el")
+  (load-file "~/.emacs.d/lisp/LispSnippet.el")
 #+end_src
-
 
 * BFS Browse File
 Il faut le fichier https://github.com/tonyaldon/bfs/tree/master
 #+begin_src elisp :tangle yes
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'bfs)
+  (add-to-list 'load-path "~/.emacs.d/lisp/")
+  (require 'bfs)
 #+end_src
 
 #+RESULTS:
 : bfs
+* Spelling Correcteur orthographe
+#+begin_src bash :tangle no
+  sudo apt install ifrench #dictionnaire fr
+#+end_src
+
+#+begin_src elisp :tangle yes
+  ;;
+  ;; Spelling Correcteur orthographe
+  ;;
+  ;; (setq ispell-local-dictionary "francais") 
+#+end_src
+
+#+RESULTS:
+: francais
