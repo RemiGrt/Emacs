@@ -11,6 +11,6 @@
 	     (mapcar (lambda (bag)
 		       (cl-reduce #'+ bag))
 		     bags
-		     )))
+	  )))
 
 
