@@ -1,3 +1,5 @@
+
+
 ;; Enable Company
 ;; Check path to input file (find-file "./distance.txt")
 
@@ -76,10 +78,15 @@ resultfinal;;1765812
 
 dist1;;
 
+(setq occur_nb (make-vector (length matrice) 0));; [0 0 0 0 0 0 0 0 0 0 0 0 ...]
 (with-temp-buffer
   (insert-file-contents "./distance.txt")
-  (setq index 0)
-  (count-matches (number-to-string (aref dist1 index)))
-  );;1
+  
+  (dotimes (index (length matrice))
+    (aset occur_nb index (count-matches (number-to-string (aref dist1 index)))))
+  occur_nb
+  );;[1 1 1 1 1 1 11 1 1 1 1 1 ...]
 
 (number-to-string 10384)
+
+(insert occur_nb)
