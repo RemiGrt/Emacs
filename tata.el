@@ -6,3 +6,6 @@ defun how-many-str (regexp str)
         finally return count))
 
 (directory-files "." t ".txt$")
+
+
+c u c x c e
