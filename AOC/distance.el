@@ -72,4 +72,4 @@ resultfinal;;1765812
 ;; Part 2 ;;
 (setq bob [1 2 3 4 4 5]);;[1 2 3 4 4 5]
 (cl-position 6 bob);;nil
-(count-matches
+(count-matches 
