@@ -1,0 +1,8 @@
+#+TITLE: My Org+Pandoc Workflow
+#+AUTHOR: İsmail Efe Top
+#+DATE: 2024-03-29
+#+LANGUAGE: en
+#+DESCRIPTION: How I use pandoc to transform my org documents to beautiful looking word documents and websites!
+
+https://arnesonium.com/2022/10/org-mode-to-docx-pipeline
+
