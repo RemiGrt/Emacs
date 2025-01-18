@@ -306,3 +306,6 @@ Don't use this function on regions with nested brackets."
 	(setq mark-active t)))
 
 #+end_src
+
+#+RESULTS:
+: rg-select-line

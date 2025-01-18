@@ -90,3 +90,33 @@ dist1;;
 
 (insert occur_nb)
 
+(create-file-buffer "*output*")
+
+(with-current-buffer "*output*"
+  (progn
+    (insert-file-contents "./distance.txt")
+    (setq p1 (line-beginning-position))
+    (end-of-buffer)
+    (backward-word)
+    (setq p2 (point))
+    (push-mark p1)
+    (goto-char p2)
+    (setq mark-active t)
+    (kill-rectangle p1 p2)
+    (beginning-of-buffer)
+    (dotimes (index (length matrice))
+      (aset occur_nb index (count-matches (number-to-string (aref dist1 index)))))
+    (dotimes (index (length matrice))
+      (setq sum (+ sum (aref occur_nb index))))
+      sum
+    );;
+  );;
+
+
+occur_nb;;
+
+(dotimes (index (length matrice))
+  (insert (number-to-string (aref occur_nb index))))
+
+
+
