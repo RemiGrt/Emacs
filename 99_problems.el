@@ -71,9 +71,10 @@ Example:
 
 (defun rg-length-list (list)
   "Find the number of elements of a list."
-  if list
-  (1+ (rg-length-list (cdr list)))
-  0
+  (if list
+      (1+ (rg-length-list (cdr list)))
+    0
+    )
   )
 
 (when '() 
@@ -83,6 +84,6 @@ Example:
 
 (cdr '(1 2 3))
 (length '( 1 2 3))
-(rg-lenght-list '(1 2 3))
+(rg-length-list '())
 
 
