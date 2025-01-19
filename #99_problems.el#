@@ -83,6 +83,6 @@ Example:
 
 (cdr '(1 2 3))
 (length '( 1 2 3))
-(rg-lenght-list '(1 2 3))
+(rg-length-list '(1 2 3))
 
 
